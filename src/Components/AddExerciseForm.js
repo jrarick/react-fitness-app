@@ -11,6 +11,7 @@ export default function AddExerciseForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    alert(`${exercise.name} was sucessfully added.`);
     props.addExercise(exercise);
     setExercise(initialFormState);
   }

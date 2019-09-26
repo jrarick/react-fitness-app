@@ -8,6 +8,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+.app {
+  opacity: 1;
+  transition: 1s opacity;
+}
+
+.app.fade-out {
+  opacity: 0;
+  transition: none;
+}
+
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
@@ -18,3 +28,4 @@ code {
   background-position: center, center;
   background-size: cover;
 }
+

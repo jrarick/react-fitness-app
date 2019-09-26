@@ -30,10 +30,10 @@ export default function ExerciseModal(props) {
         ) : (
           <>
             <section className="modal-card-body section">
-              <p className="content has-text-weight-medium box">Name: {props.targetedExercise.name}</p>
-              <p className="content has-text-weight-medium box">Weight: {props.targetedExercise.weight}</p>
-              <p className="content has-text-weight-medium box">Reps: {props.targetedExercise.reps}</p>
-              <p className="content has-text-weight-medium box">Additional details: {props.targetedExercise.comments}</p>
+              <p className="content has-text-weight-medium">Name: <span className="box">{props.targetedExercise.name}</span></p>
+              <p className="content has-text-weight-medium">Weight: <span className="box">{props.targetedExercise.weight}</span></p>
+              <p className="content has-text-weight-medium">Reps: <span className="box">{props.targetedExercise.reps}</span></p>
+              <p className="content has-text-weight-medium">Additional details: <span className="box">{props.targetedExercise.comments}</span></p>
             </section>
             <footer className="modal-card-foot">
               <button

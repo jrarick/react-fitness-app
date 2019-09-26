@@ -1,16 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import AddExerciseForm from './Components/AddExerciseForm';
 import ExerciseModal from './Components/ExerciseModal';
+import DaySelectContainer from './Components/DaySelectContainer';
+import Banner from './Components/Banner';
 
 export default function App() {
-
-  const daysOfWeekArray = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  const daysOfWeekList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
   const initialFormState = { key: '', name: '', weight: '', reps: '', comments: '', day: '' };
+  const [appLoaded, setAppLoaded] = useState(false);
   const [targetedExercise, setTargetedExercise] = useState(initialFormState);
   const [exercises, setExercises] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
   const [dayOfWeek, setDayOfWeek] = useState('Sunday');
   const [modalIsOpen, setModalIsOpen] = useState(false);
+
+  useEffect(() => {
+    window.onload = setAppLoaded(true);
+  }, [appLoaded]);
 
   function addExercise(exercise) {
     setIsEditing(false);
@@ -40,41 +46,24 @@ export default function App() {
   }
 
   return(
-    <div>
-      <section className="hero is-medium bg-img">
-        <div className="hero-body">
-          <div className="container">
-            <h1 className="title has-text-white">Fitness Tracker</h1>
-            <h2 className="subtitle has-text-white">Plan your workout for the week with this handy application. Enter
-            the exercise details below to add an exercise to your workout plan. Click on any exercise you've
-            added to view details and make changes.</h2>
-          </div>
-        </div>
-      </section>
+    <div className={appLoaded ? "app" : "app fade-out"}>
+      <Banner />
 
       <div className="columns section has-background-white-ter">
         <AddExerciseForm 
           addExercise={addExercise}
           isEditing={isEditing}
-          daysOfWeekArray={daysOfWeekArray}
+          daysOfWeekList={daysOfWeekList}
         />
 
         <div className="column"></div>
 
         <section className="column is-three-fifths box">
-          <div className="tabs is-centered is-fullwidth is-boxed">
-            <ul>
-              {daysOfWeekArray.map( (dayOfWeekArrayItem, index) => (
-                <li
-                  key={index}
-                  className={dayOfWeek === dayOfWeekArrayItem ? "is-active" : null}
-                  onClick={() => setDayOfWeek(dayOfWeekArrayItem)}
-                >
-                  <a>{dayOfWeekArrayItem}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+          <DaySelectContainer
+            dayOfWeek={dayOfWeek}
+            setDayOfWeek={setDayOfWeek}
+            daysOfWeekList={daysOfWeekList}
+          />
           
           <div className="tags are-large">
             {exercises.map( (exercise, index) => (

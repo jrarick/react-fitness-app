@@ -21,7 +21,7 @@ export default function EditExerciseForm(props) {
           <label
             className="label"
             htmlFor="name"
-          >Exercise Name:
+          >Name:
           </label>
           <div className="control">
             <input
@@ -39,7 +39,7 @@ export default function EditExerciseForm(props) {
           <label
             className="label"
             htmlFor="weight"
-          >Exercise Weight:
+          >Weight:
           </label>
           <div className="control">
             <input
@@ -57,7 +57,7 @@ export default function EditExerciseForm(props) {
           <label
             className="label"
             htmlFor="reps"
-          >Exercise Reps:
+          >Reps:
           </label>
           <div className="control">
             <input
